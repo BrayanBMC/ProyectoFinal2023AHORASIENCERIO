@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ProyectoWebFinal.Models.tel_trabajador>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link rel="stylesheet" href="/Content/estilos.css" />
+<h2>Teléfono Trabajador</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trabajador.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trabajador.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.codigo }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.codigo }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.codigo })
+        </td>
+    </tr>
+}
+
+</table>

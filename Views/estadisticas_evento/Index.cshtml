@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ProyectoWebFinal.Models.estadisticas_evento>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<link rel="stylesheet" href="/Content/estilos.css" />
+<h2>Estadisticas de Eventos</h2>
+
+<p>
+    @Html.ActionLink("Crear Nueva", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.puntuacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_compra)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cliente.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.evento.nombre)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.puntuacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_compra)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.evento.nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.id_estadisticas }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.id_estadisticas }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_estadisticas })
+        </td>
+    </tr>
+}
+
+</table>

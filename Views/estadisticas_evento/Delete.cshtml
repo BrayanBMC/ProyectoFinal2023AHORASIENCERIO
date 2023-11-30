@@ -1,0 +1,57 @@
+﻿@model ProyectoWebFinal.Models.estadisticas_evento
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<link rel="stylesheet" href="/Content/estilos.css" />
+<h2>Eliminar</h2>
+
+<h3>¿Está seguro?</h3>
+<div>
+    <h4>Estadisticas de Evento</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.puntuacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.puntuacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_compra)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_compra)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.evento.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.evento.nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

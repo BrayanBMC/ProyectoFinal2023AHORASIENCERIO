@@ -1,0 +1,35 @@
+﻿@model ProyectoWebFinal.Models.tel_cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link rel="stylesheet" href="/Content/estilos.css" />
+<h2>Detalles</h2>
+
+<div>
+    <h4>Teléfono Cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.cedula }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

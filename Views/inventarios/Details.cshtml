@@ -1,0 +1,43 @@
+﻿@model ProyectoWebFinal.Models.inventario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link rel="stylesheet" href="/Content/estilos.css" />
+<h2>Detalles</h2>
+
+<div>
+    <h4>Inventario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.entradas_disponibles)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.entradas_disponibles)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.precio_entrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.precio_entrada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.evento.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.evento.nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_inventario }) |
+    @Html.ActionLink("Volver", "Index")
+</p>

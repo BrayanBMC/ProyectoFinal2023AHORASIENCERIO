@@ -1,0 +1,57 @@
+﻿@model ProyectoWebFinal.Models.usuario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<link rel="stylesheet" href="/Content/estilos.css" />
+<h2>Eliminar</h2>
+
+<h3>¿Está seguro?</h3>
+<div>
+    <h4>usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombre_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombre_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rol.rol1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rol.rol1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.trabajador.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.trabajador.nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
+        </div>
+    }
+</div>

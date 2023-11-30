@@ -1,0 +1,27 @@
+﻿@model ProyectoWebFinal.Models.tipo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<link rel="stylesheet" href="/Content/estilos.css" />
+<h2>Detalles</h2>
+
+<div>
+    <h4>Tipo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id_tipo }) |
+    @Html.ActionLink("Volver", "Index")
+</p>
