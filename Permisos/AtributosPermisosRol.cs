@@ -8,21 +8,25 @@ namespace ProyectoWebFinal.Permisos
 {
     public class AtributosPermisosRol : ActionFilterAttribute
     {
-        private Rol idRol;
-        public AtributosPermisosRol(Rol _idrol)
+        private int idRol;
+
+        public AtributosPermisosRol(int _idRol)
         {
-            idRol = _idrol;
+            idRol = _idRol;
         }
+
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (HttpContext.Current.Session["usuario"] != null)
             {
                 usuario usuario = HttpContext.Current.Session["usuario"] as usuario;
-                if ((Rol)usuario.id_rol != this.idRol)
+
+                if (usuario != null && usuario.id_rol != idRol)
                 {
                     filterContext.Result = new RedirectResult("~/Home/SinPermisos");
                 }
             }
+
             base.OnActionExecuting(filterContext);
         }
     }
