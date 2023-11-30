@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace ProyectoWebFinal.Controllers
 {
@@ -26,5 +27,19 @@ namespace ProyectoWebFinal.Controllers
 
             return View();
         }
+
+        public ActionResult CerrarSesion()
+        {
+            FormsAuthentication.SignOut();
+            Session["usuario"] = null;
+            return RedirectToAction("Index", "Acceso");
+        }
+
+        public ActionResult SinPermisos()
+        {
+            ViewBag.Message = "No tiene permisos para ver este página.";
+            return View();
+        }
+
     }
 }

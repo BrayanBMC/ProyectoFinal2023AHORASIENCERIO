@@ -332,6 +332,7 @@
     <Compile Include="Models\usuario.cs">
       <DependentUpon>ModeloBDProyecto.tt</DependentUpon>
     </Compile>
+    <Compile Include="Permisos\AtributosPermisosRol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -467,6 +468,7 @@
     <Content Include="Views\usuarios\Index.cshtml" />
     <Content Include="Views\reporteEvento\vistaEventos.cshtml" />
     <Content Include="Views\Acceso\Index.cshtml" />
+    <Content Include="Views\Home\SinPermisos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
