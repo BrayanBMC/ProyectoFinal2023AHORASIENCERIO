@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoWebFinal.Models;
+using ProyectoWebFinal.Permisos;
 
 namespace ProyectoWebFinal.Controllers
 {
@@ -36,6 +37,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: lugares/Create
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +61,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: lugares/Edit/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +93,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: lugares/Delete/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -105,6 +109,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // POST: lugares/Delete/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

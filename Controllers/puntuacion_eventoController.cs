@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoWebFinal.Models;
+using ProyectoWebFinal.Permisos;
 
 namespace ProyectoWebFinal.Controllers
 {
@@ -15,6 +16,7 @@ namespace ProyectoWebFinal.Controllers
         private proyectowebEntities db = new proyectowebEntities();
 
         // GET: puntuacion_evento
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Index()
         {
             var puntuacion_evento = db.puntuacion_evento.Include(p => p.cliente).Include(p => p.evento);
@@ -22,6 +24,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: puntuacion_evento/Details/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +40,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: puntuacion_evento/Create
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Create()
         {
             ViewBag.cedula_cli = new SelectList(db.cliente, "cedula", "nombre");
@@ -64,6 +68,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: puntuacion_evento/Edit/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -99,6 +104,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: puntuacion_evento/Delete/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Delete(int? id)
         {
             if (id == null)

@@ -16,7 +16,7 @@ namespace ProyectoWebFinal.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Bienvenidos";
 
             return View();
         }

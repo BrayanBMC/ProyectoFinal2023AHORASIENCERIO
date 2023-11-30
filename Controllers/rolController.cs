@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoWebFinal.Models;
+using ProyectoWebFinal.Permisos;
 
 namespace ProyectoWebFinal.Controllers
 {
@@ -15,12 +16,14 @@ namespace ProyectoWebFinal.Controllers
         private proyectowebEntities db = new proyectowebEntities();
 
         // GET: rol
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Index()
         {
             return View(db.rol.ToList());
         }
 
         // GET: rol/Details/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,6 +39,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: rol/Create
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Create()
         {
             return View();
@@ -59,6 +63,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: rol/Edit/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -90,6 +95,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: rol/Delete/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Delete(int? id)
         {
             if (id == null)

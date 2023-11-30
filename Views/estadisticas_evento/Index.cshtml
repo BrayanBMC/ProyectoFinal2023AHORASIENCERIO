@@ -1,52 +1,60 @@
-﻿@model IEnumerable<ProyectoWebFinal.Models.estadisticas_evento>
+﻿@model List<ProyectoWebFinal.Models.estadisticas_evento>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Informe";
 }
 
-<link rel="stylesheet" href="/Content/estilos.css" />
-<h2>Estadisticas de Eventos</h2>
+<h2>Informe de Estadísticas de Eventos</h2>
 
 <p>
-    @Html.ActionLink("Crear Nueva", "Create")
+    @Html.ActionLink("Volver a la Lista", "Index")
 </p>
+
+<p>
+    <strong>Promedio de Puntuación:</strong> @ViewBag.PuntuacionPromedio
+</p>
+
+<p>
+    <strong>Rango de Fechas:</strong> @ViewBag.StartDate.ToShortDateString() - @ViewBag.EndDate.ToShortDateString()
+</p>
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.puntuacion)
+            Puntuación
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.fecha_compra)
+            Fecha de Compra
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.cliente.nombre)
+            Cliente
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.evento.nombre)
+            Evento
         </th>
-        <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.puntuacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fecha_compra)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cliente.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.evento.nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.id_estadisticas }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.id_estadisticas }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.id_estadisticas })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.puntuacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecha_compra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cliente.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.evento.nombre)
+            </td>
+        </tr>
+    }
 </table>
+
+<p>
+    @Html.ActionLink("Crear Nueva", "Create")
+    | @Html.ActionLink("Generar Informe", "GenerateReport", new { startDate = DateTime.Now.AddDays(-7), endDate = DateTime.Now })
+</p>
+

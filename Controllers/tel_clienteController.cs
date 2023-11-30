@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoWebFinal.Models;
+using ProyectoWebFinal.Permisos;
 
 namespace ProyectoWebFinal.Controllers
 {
@@ -15,6 +16,7 @@ namespace ProyectoWebFinal.Controllers
         private proyectowebEntities db = new proyectowebEntities();
 
         // GET: tel_cliente
+    
         public ActionResult Index()
         {
             var tel_cliente = db.tel_cliente.Include(t => t.cliente);
@@ -22,6 +24,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: tel_cliente/Details/5
+
         public ActionResult Details(int? id)
         {
             if (id == null)

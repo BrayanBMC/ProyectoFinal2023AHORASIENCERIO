@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoWebFinal.Models;
+using ProyectoWebFinal.Permisos;
 
 namespace ProyectoWebFinal.Controllers
 {
@@ -37,6 +38,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: eventos/Create
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Create()
         {
             ViewBag.codigo_tra = new SelectList(db.trabajador, "codigo", "nombre");
@@ -66,6 +68,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: eventos/Edit/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -103,6 +106,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: eventos/Delete/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Delete(int? id)
         {
             if (id == null)

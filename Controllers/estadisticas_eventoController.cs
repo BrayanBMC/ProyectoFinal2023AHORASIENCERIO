@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoWebFinal.Models;
+using ProyectoWebFinal.Permisos;
 
 namespace ProyectoWebFinal.Controllers
 {
@@ -15,6 +16,7 @@ namespace ProyectoWebFinal.Controllers
         private proyectowebEntities db = new proyectowebEntities();
 
         // GET: estadisticas_evento
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Index()
         {
             var estadisticas_evento = db.estadisticas_evento.Include(e => e.cliente).Include(e => e.evento);
@@ -22,6 +24,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: estadisticas_evento/Details/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,11 +40,30 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: estadisticas_evento/Create
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Create()
         {
             ViewBag.cedula_cli = new SelectList(db.cliente, "cedula", "nombre");
             ViewBag.id_evento = new SelectList(db.evento, "id_evento", "nombre");
             return View();
+        }
+        public ActionResult GenerateReport(DateTime startDate, DateTime endDate)
+        {
+            // Obtener las estadísticas dentro del rango de fechas
+            var estadisticas = db.estadisticas_evento
+                .Where(e => e.fecha_compra >= startDate && e.fecha_compra <= endDate)
+                .Include(e => e.cliente)
+                .Include(e => e.evento)
+                .ToList();
+
+           
+            double puntuacionPromedio = estadisticas.Any() ? estadisticas.Average(e => e.puntuacion) : 0;
+
+            ViewBag.PuntuacionPromedio = puntuacionPromedio;
+            ViewBag.StartDate = startDate;
+            ViewBag.EndDate = endDate;
+
+            return View("ReportView", estadisticas);
         }
 
         // POST: estadisticas_evento/Create
@@ -64,6 +86,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: estadisticas_evento/Edit/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -99,6 +122,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: estadisticas_evento/Delete/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -132,5 +156,7 @@ namespace ProyectoWebFinal.Controllers
             }
             base.Dispose(disposing);
         }
+
+        
     }
 }
