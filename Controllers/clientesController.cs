@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoWebFinal.Models;
+using ProyectoWebFinal.Permisos;
 
 namespace ProyectoWebFinal.Controllers
 {
@@ -15,6 +16,7 @@ namespace ProyectoWebFinal.Controllers
         private proyectowebEntities db = new proyectowebEntities();
 
         // GET: clientes
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Index()
         {
             var cliente = db.cliente.Include(c => c.tel_cliente);
@@ -22,6 +24,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: clientes/Details/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -62,6 +65,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: clientes/Edit/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -95,6 +99,7 @@ namespace ProyectoWebFinal.Controllers
         }
 
         // GET: clientes/Delete/5
+        [AtributosPermisosRol((int)Rol.Administrador)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
